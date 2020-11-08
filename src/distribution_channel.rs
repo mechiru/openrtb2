@@ -1,3 +1,7 @@
+/// 3.2.13 [`Site`], 3.2.14 [`App`].
+///
+/// [`Site`]: ./struct.Site.html
+/// [`App`]: ./struct.App.html
 #[derive(serde::Serialize, serde::Deserialize, Debug, PartialEq, Clone)]
 #[serde(rename_all = "snake_case")]
 pub enum DistributionChannel {
