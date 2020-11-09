@@ -5,7 +5,7 @@ use serde::{Deserialize, Serialize};
 /// The following table lists the various options for the video or audio start delay. If the start
 /// delay value is greater than 0, then the position is mid-roll and the value indicates the start
 /// delay.
-#[derive(Debug, PartialEq, Clone, Copy)]
+#[derive(Debug, PartialEq, Eq, Clone, Copy)]
 pub enum StartDelay {
     /// Mid-Roll (value indicates start delay in second)
     MidRoll(i32),

@@ -4,7 +4,7 @@ use serde_repr::{Deserialize_repr, Serialize_repr};
 ///
 /// The following table lists the media ratings used in describing content based on the IQG 2.1
 /// categorization. Refer to www.iab.com/guidelines/digital-video-suite for more information.
-#[derive(Serialize_repr, Deserialize_repr, Debug, PartialEq, Clone, Copy)]
+#[derive(Serialize_repr, Deserialize_repr, Debug, PartialEq, Eq, Clone, Copy)]
 #[repr(i32)]
 pub enum IqgMediaRating {
     /// All Audiences

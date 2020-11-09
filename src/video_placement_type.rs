@@ -4,7 +4,7 @@ use serde_repr::{Deserialize_repr, Serialize_repr};
 ///
 /// The following table lists the various types of video placements derived largely from the IAB
 /// Digital Video Guidelines.
-#[derive(Serialize_repr, Deserialize_repr, Debug, PartialEq, Clone, Copy)]
+#[derive(Serialize_repr, Deserialize_repr, Debug, PartialEq, Eq, Clone, Copy)]
 #[repr(i32)]
 pub enum VideoPlacementType {
     /// In-Stream

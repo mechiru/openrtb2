@@ -4,7 +4,7 @@ use serde_repr::{Deserialize_repr, Serialize_repr};
 ///
 /// The following table lists the options for a bidder to signal the exchange as to why it did not
 /// offer a bid for the impression.
-#[derive(Serialize_repr, Deserialize_repr, Debug, PartialEq, Clone, Copy)]
+#[derive(Serialize_repr, Deserialize_repr, Debug, PartialEq, Eq, Clone, Copy)]
 #[repr(i32)]
 pub enum NoBidReason {
     /// Unknown Error

@@ -8,7 +8,7 @@ use serde_repr::{Deserialize_repr, Serialize_repr};
 /// prominence. This OpenRTB table has values derived from the Inventory Quality Guidelines (IQG).
 /// Practitioners should keep in sync with updates to the IQG values as published on IAB.com. Values
 /// “4” - “7” apply to apps per the mobile addendum to IQG version 2.1.
-#[derive(Serialize_repr, Deserialize_repr, Debug, PartialEq, Clone, Copy)]
+#[derive(Serialize_repr, Deserialize_repr, Debug, PartialEq, Eq, Clone, Copy)]
 #[repr(i32)]
 pub enum AdPosition {
     /// Unknown

@@ -3,7 +3,7 @@ use serde_repr::{Deserialize_repr, Serialize_repr};
 /// 5.15 Content Delivery Methods
 ///
 /// The following table lists the various options for the delivery of video or audio content.
-#[derive(Serialize_repr, Deserialize_repr, Debug, PartialEq, Clone, Copy)]
+#[derive(Serialize_repr, Deserialize_repr, Debug, PartialEq, Eq, Clone, Copy)]
 #[repr(i32)]
 pub enum ContentDeliveryMethod {
     /// Streaming

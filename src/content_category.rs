@@ -4,7 +4,7 @@
 /// have been adopted to easily support the communication of primary and secondary categories for
 /// various objects. This OpenRTB table has values derived from the IAB Tech Lab Content Taxonomy.
 /// Practitioners should keep in sync with updates as published on www.iab.com.
-#[derive(serde::Serialize, serde::Deserialize, Debug, PartialEq, Clone, Copy)]
+#[derive(serde::Serialize, serde::Deserialize, Debug, PartialEq, Eq, Clone, Copy)]
 #[serde(rename_all = "SCREAMING-KEBAB-CASE")]
 pub enum ContentCategory {
     /// Arts & Entertainment

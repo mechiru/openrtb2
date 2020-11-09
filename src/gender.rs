@@ -1,7 +1,7 @@
 /// 3.2.20 [User#gender](./struct.User.html#structfield.gender)
 ///
 /// Gender, where “M” = male, “F” = female, “O” = known to be other.
-#[derive(serde::Serialize, serde::Deserialize, Debug, PartialEq, Clone, Copy)]
+#[derive(serde::Serialize, serde::Deserialize, Debug, PartialEq, Eq, Clone, Copy)]
 pub enum Gender {
     #[serde(rename = "M")]
     Male,

@@ -3,7 +3,7 @@ use serde_repr::{Deserialize_repr, Serialize_repr};
 /// 5.10 Playback Methods
 ///
 /// The following table lists the various playback methods.
-#[derive(Serialize_repr, Deserialize_repr, Debug, PartialEq, Clone, Copy)]
+#[derive(Serialize_repr, Deserialize_repr, Debug, PartialEq, Eq, Clone, Copy)]
 #[repr(i32)]
 pub enum PlaybackMethod {
     /// Initiates on Page Load with Sound On

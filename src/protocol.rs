@@ -4,7 +4,7 @@ use serde_repr::{Deserialize_repr, Serialize_repr};
 ///
 /// The following table lists the options for the various bid response protocols that could be
 /// supported by an exchange.
-#[derive(Serialize_repr, Deserialize_repr, Debug, PartialEq, Clone, Copy)]
+#[derive(Serialize_repr, Deserialize_repr, Debug, PartialEq, Eq, Clone, Copy)]
 #[repr(i32)]
 pub enum Protocol {
     /// VAST 1.0

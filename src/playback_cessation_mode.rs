@@ -3,7 +3,7 @@ use serde_repr::{Deserialize_repr, Serialize_repr};
 /// 5.11 Playback Cessation Modes
 ///
 /// The following table lists the various modes for when playback terminates.
-#[derive(Serialize_repr, Deserialize_repr, Debug, PartialEq, Clone, Copy)]
+#[derive(Serialize_repr, Deserialize_repr, Debug, PartialEq, Eq, Clone, Copy)]
 #[repr(i32)]
 pub enum PlaybackCessationMode {
     /// On Video Completion or when Terminated by User

@@ -3,7 +3,7 @@ use serde_repr::{Deserialize_repr, Serialize_repr};
 /// 5.16 Feed Types
 ///
 /// The following table lists the types of feeds, typically for audio.
-#[derive(Serialize_repr, Deserialize_repr, Debug, PartialEq, Clone, Copy)]
+#[derive(Serialize_repr, Deserialize_repr, Debug, PartialEq, Eq, Clone, Copy)]
 #[repr(i32)]
 pub enum FeedType {
     /// Music Service

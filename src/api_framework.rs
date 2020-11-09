@@ -3,7 +3,7 @@ use serde_repr::{Deserialize_repr, Serialize_repr};
 /// 5.6 API Frameworks
 ///
 /// The following table is a list of API frameworks supported by the publisher.
-#[derive(Serialize_repr, Deserialize_repr, Debug, PartialEq, Clone, Copy)]
+#[derive(Serialize_repr, Deserialize_repr, Debug, PartialEq, Eq, Clone, Copy)]
 #[repr(i32)]
 pub enum ApiFramework {
     /// VPAID 1.0

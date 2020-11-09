@@ -5,7 +5,7 @@ use serde_repr::{Deserialize_repr, Serialize_repr};
 /// The following table lists the options for an exchange to inform a bidder as to the reason why
 /// they did not win an impression.
 #[allow(non_camel_case_types)]
-#[derive(Serialize_repr, Deserialize_repr, Debug, PartialEq, Clone, Copy)]
+#[derive(Serialize_repr, Deserialize_repr, Debug, PartialEq, Eq, Clone, Copy)]
 #[repr(i32)]
 pub enum LossReason {
     /// Bid Won

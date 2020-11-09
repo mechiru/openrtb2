@@ -5,7 +5,7 @@ use serde_repr::{Deserialize_repr, Serialize_repr};
 /// The following table lists the options to indicate markup types allowed for companion ads that
 /// apply to video and audio ads. This table is derived from VAST 2.0+ and DAAST 1.0 specifications.
 /// Refer to www.iab.com/guidelines/digital-video-suite for more information.
-#[derive(Serialize_repr, Deserialize_repr, Debug, PartialEq, Clone, Copy)]
+#[derive(Serialize_repr, Deserialize_repr, Debug, PartialEq, Eq, Clone, Copy)]
 #[repr(i32)]
 pub enum CompanionType {
     /// Static Resource

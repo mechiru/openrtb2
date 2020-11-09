@@ -12,7 +12,7 @@ use serde_repr::{Deserialize_repr, Serialize_repr};
 ///
 /// This OpenRTB table has values derived from the Inventory Quality Guidelines (IQG). Practitioners
 /// should keep in sync with updates to the IQG values.
-#[derive(Serialize_repr, Deserialize_repr, Debug, PartialEq, Clone, Copy)]
+#[derive(Serialize_repr, Deserialize_repr, Debug, PartialEq, Eq, Clone, Copy)]
 #[repr(i32)]
 pub enum DeviceType {
     /// Mobile/Tablet

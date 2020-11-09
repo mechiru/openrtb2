@@ -5,7 +5,7 @@
 ///
 /// [`BidRequest#at`]: ./struct.BidRequest.html#structfield.at
 /// [`Deal#at`]: ./struct.Deal.html#structfield.at
-#[derive(Debug, PartialEq, Clone, Copy)]
+#[derive(Debug, PartialEq, Eq, Clone, Copy)]
 pub enum AuctionType {
     FirstPrice,
     SecondPricePlus,
