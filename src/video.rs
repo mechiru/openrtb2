@@ -11,10 +11,11 @@
 /// be offered as banner, audio, and/or native by also including as Imp subordinates objects of
 /// those types. However, any given bid for the impression must conform to one of the offered types.
 #[derive(serde::Serialize, serde::Deserialize, Debug, PartialEq, Clone)]
-pub struct Video {
+pub struct Video<'a> {
     /// string array; required
     /// Content MIME types supported (e.g., “video/x-ms-wmv”, “video/mp4”).
-    pub mimes: Vec<String>,
+    #[serde(borrow)]
+    pub mimes: Vec<std::borrow::Cow<'a, str>>,
 
     /// integer; recommended
     /// Minimum video ad duration in seconds.
@@ -147,8 +148,8 @@ pub struct Video {
 
     /// object array
     /// Array of Banner objects (Section 3.2.6) if companion ads are available.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub companionad: Option<Vec<crate::Banner>>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub companionad: Option<Vec<crate::Banner<'a>>>,
 
     /// integer array
     /// List of supported API frameworks for this impression. Refer to List 5.6. If an API is not
@@ -170,7 +171,7 @@ pub struct Video {
     pub ext: Option<json_ext::Ext>,
 }
 
-impl Default for Video {
+impl<'a> Default for Video<'a> {
     fn default() -> Self {
         Self {
             mimes: Default::default(),

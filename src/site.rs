@@ -4,21 +4,21 @@
 /// non-browser application. A bid request must not contain both a Site and an App object. At a
 /// minimum, it is useful to provide a site ID or page URL, but this is not strictly required.
 #[derive(serde::Serialize, serde::Deserialize, Default, Debug, PartialEq, Clone)]
-pub struct Site {
+pub struct Site<'a> {
     /// string; recommended
     /// Exchange-specific site ID.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub id: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub id: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Site name (may be aliased at the publisher’s request).
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub name: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Domain of the site (e.g., “mysite.foo.com”).
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub domain: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub domain: Option<std::borrow::Cow<'a, str>>,
 
     /// string array
     /// Array of IAB content categories of the site. Refer to List 5.1.
@@ -39,18 +39,18 @@ pub struct Site {
 
     /// string
     /// URL of the page where the impression will be shown.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub page: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub page: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Referrer URL that caused navigation to the current page.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub r#ref: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub r#ref: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Search string that caused navigation to the current page.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub search: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub search: Option<std::borrow::Cow<'a, str>>,
 
     /// integer
     /// Indicates if the site has been programmed to optimize layout when viewed on mobile devices,
@@ -73,18 +73,18 @@ pub struct Site {
 
     /// object
     /// Details about the Publisher (Section 3.2.15) of the site.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub publisher: Option<crate::Publisher>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub publisher: Option<crate::Publisher<'a>>,
 
     /// object
     /// Details about the Content (Section 3.2.16) within the site.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub content: Option<crate::Content>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub content: Option<crate::Content<'a>>,
 
     /// string
     /// Comma separated list of keywords about the site.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub keywords: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub keywords: Option<std::borrow::Cow<'a, str>>,
 
     /// object
     /// Placeholder for exchange-specific extensions to OpenRTB.

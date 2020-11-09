@@ -11,31 +11,33 @@
 /// request depending on whether the media is browser-based web content or a non-browser
 /// application, respectively.
 #[derive(serde::Serialize, serde::Deserialize, Default, Debug, PartialEq, Clone)]
-pub struct BidRequest {
+pub struct BidRequest<'a> {
     /// string; required
     /// Unique ID of the bid request, provided by the exchange.
-    pub id: String,
+    #[serde(borrow)]
+    pub id: std::borrow::Cow<'a, str>,
 
     /// object array; required
     /// Array of Imp objects (Section 3.2.4) representing the impressions offered. At least 1 Imp
     /// object is required.
-    pub imp: Vec<crate::Imp>,
+    #[serde(borrow)]
+    pub imp: Vec<crate::Imp<'a>>,
 
     /// object; recommended
-    #[serde(flatten, default, skip_serializing_if = "Option::is_none")]
-    pub channel: Option<crate::DistributionChannel>,
+    #[serde(borrow, flatten, default, skip_serializing_if = "Option::is_none")]
+    pub channel: Option<crate::DistributionChannel<'a>>,
 
     /// object; recommended
     /// Details via a Device object (Section 3.2.18) about the user’s device to which the
     /// impression will be delivered.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub device: Option<crate::Device>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub device: Option<crate::Device<'a>>,
 
     /// object; recommended
     /// Details via a User object (Section 3.2.20) about the human user of the device; the
     /// advertising audience.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub user: Option<crate::User>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub user: Option<crate::User<'a>>,
 
     /// integer; default 0
     /// Indicator of test mode in which auctions are not billable, where 0 = live mode, 1 = test
@@ -64,16 +66,16 @@ pub struct BidRequest {
     /// IDs of seats and knowledge of the buyer’s customers to which they refer must be coordinated
     /// between bidders and the exchange a priori. At most, only one of wseat and bseat should be
     /// used in the same request. Omission of both implies no seat restrictions.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub wseat: Option<Vec<String>>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub wseat: Option<Vec<std::borrow::Cow<'a, str>>>,
 
     /// string array
     /// Block list of buyer seats (e.g., advertisers, agencies) restricted from bidding on this
     /// impression. IDs of seats and knowledge of the buyer’s customers to which they refer must be
     /// coordinated between bidders and the exchange a priori. At most, only one of wseat and bseat
     /// should be used in the same request. Omission of both implies no seat restrictions.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub bseat: Option<Vec<String>>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub bseat: Option<Vec<std::borrow::Cow<'a, str>>>,
 
     /// integer; default 0
     /// Flag to indicate if Exchange can verify that the impressions offered represent all of the
@@ -91,16 +93,16 @@ pub struct BidRequest {
     /// Array of allowed currencies for bids on this bid request using ISO-4217 alpha codes.
     /// Recommended only if the exchange accepts multiple currencies.
     // TODO: ISO-4217 alpha
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub cur: Option<Vec<String>>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub cur: Option<Vec<std::borrow::Cow<'a, str>>>,
 
     /// string array
     /// White list of languages for creatives using ISO-639-1-alpha-2. Omission implies no specific
     /// restrictions, but buyers would be advised to consider language attribute in the Device
     /// and/or Content objects if available.
     // TODO: ISO-639-1-alpha-2
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub wlang: Option<Vec<String>>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub wlang: Option<Vec<std::borrow::Cow<'a, str>>>,
 
     /// string array
     /// Blocked advertiser categories using the IAB content categories. Refer to List 5.1.
@@ -109,21 +111,21 @@ pub struct BidRequest {
 
     /// string array
     /// Block list of advertisers by their domains (e.g., “ford.com”).
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub badv: Option<Vec<String>>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub badv: Option<Vec<std::borrow::Cow<'a, str>>>,
 
     /// string array
     /// Block list of applications by their platform-specific exchange- independent application
     /// identifiers. On Android, these should be bundle or package names (e.g., com.foo.mygame). On
     /// iOS, these are numeric IDs.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub bapp: Option<Vec<String>>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub bapp: Option<Vec<std::borrow::Cow<'a, str>>>,
 
     /// object
     /// A Sorce object (Section 3.2.2) that provides data about the inventory source and which
     /// entity makes the final decision.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub source: Option<crate::Source>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub source: Option<crate::Source<'a>>,
 
     /// object
     /// A Regs object (Section 3.2.3) that specifies any industry, legal, or governmental

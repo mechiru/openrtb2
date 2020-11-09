@@ -7,7 +7,7 @@
 /// another RTB exchange, a mediation platform, or an ad server combines direct campaigns with 3rd
 /// party demand in decisioning.
 #[derive(serde::Serialize, serde::Deserialize, Default, Debug, PartialEq, Clone)]
-pub struct Source {
+pub struct Source<'a> {
     /// integer; recommended
     /// Entity responsible for the final impression sale decision, where 0 = exchange, 1 = upstream
     /// source.
@@ -21,14 +21,14 @@ pub struct Source {
     /// string; recommended
     /// Transaction ID that must be common across all participants in this bid request (e.g.,
     /// potentially multiple exchanges).
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub tid: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub tid: Option<std::borrow::Cow<'a, str>>,
 
     /// string; recommended
     /// Payment ID chain string containing embedded syntax described in the TAG Payment ID Protocol
     /// v1.0.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub pchain: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub pchain: Option<std::borrow::Cow<'a, str>>,
 
     /// object
     /// Placeholder for exchange-specific extensions to OpenRTB.

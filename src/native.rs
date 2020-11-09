@@ -16,18 +16,20 @@
 /// also be offered as banner, video, and/or audio by also including as Imp subordinates objects of
 /// those types. However, any given bid for the impression must conform to one of the offered types.
 #[derive(serde::Serialize, serde::Deserialize, Default, Debug, PartialEq, Clone)]
-pub struct Native {
+pub struct Native<'a> {
     /// string; required
     /// Request payload complying with the Native Ad Specification.
-    // TODO: enum NativeRequest { String(String), V1(openrtb_native1::request::Request) }
-    pub request: String,
+    // TODO: enum NativeRequest<'a> { String(std::borrow::Cow<'a, str>),
+    // V1(openrtb_native1::request::Request) }
+    #[serde(borrow)]
+    pub request: std::borrow::Cow<'a, str>,
 
     /// string; recommended
     /// Version of the Dynamic Native Ads API to which request complies; highly recommended for
     /// efficient parsing.
     // TODO: Option<openrtb-native1::Version>
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub ver: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub ver: Option<std::borrow::Cow<'a, str>>,
 
     /// integer array
     /// List of supported API frameworks for this impression. Refer to List 5.6. If an API is not

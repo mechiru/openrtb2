@@ -6,16 +6,17 @@
 /// impressions that it can win (default) or if it is only interested in winning any if it can win
 /// them all as a group.
 #[derive(serde::Serialize, serde::Deserialize, Default, Debug, PartialEq, Clone)]
-pub struct SeatBid {
+pub struct SeatBid<'a> {
     /// object array; required
     /// Array of 1+ Bid objects (Section 4.2.3) each related to an impression. Multiple bids can
     /// relate to the same impression.
-    pub bid: Vec<crate::Bid>,
+    #[serde(borrow)]
+    pub bid: Vec<crate::Bid<'a>>,
 
     /// string
     /// ID of the buyer seat (e.g., advertiser, agency) on whose behalf this bid is made.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub seat: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub seat: Option<std::borrow::Cow<'a, str>>,
 
     /// integer; default 0
     /// 0 = impressions can be won individually; 1 = impressions must be won or lost as a group.

@@ -3,16 +3,16 @@
 /// This object describes the publisher of the media in which the ad will be displayed. The
 /// publisher is typically the seller in an OpenRTB transaction.
 #[derive(serde::Serialize, serde::Deserialize, Default, Debug, PartialEq, Clone)]
-pub struct Publisher {
+pub struct Publisher<'a> {
     /// string
     /// Exchange-specific publisher ID.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub id: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub id: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Publisher name (may be aliased at the publisher’s request).
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub name: Option<std::borrow::Cow<'a, str>>,
 
     /// string array
     /// Array of IAB content categories that describe the publisher. Refer to List 5.1.
@@ -21,8 +21,8 @@ pub struct Publisher {
 
     /// string
     /// Highest level domain of the publisher (e.g., “publisher.com”).
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub domain: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub domain: Option<std::borrow::Cow<'a, str>>,
 
     /// object
     /// Placeholder for exchange-specific extensions to OpenRTB.

@@ -4,14 +4,16 @@
 /// impression in the bid request via the impid attribute and constitutes an offer to buy that
 /// impression for a given price.
 #[derive(serde::Serialize, serde::Deserialize, Default, Debug, PartialEq, Clone)]
-pub struct Bid {
+pub struct Bid<'a> {
     /// string; required
     /// Bidder generated bid ID to assist with logging/tracking.
-    pub id: String,
+    #[serde(borrow)]
+    pub id: std::borrow::Cow<'a, str>,
 
     /// string; required
     /// ID of the Imp object in the related bid request.
-    pub impid: String,
+    #[serde(borrow)]
+    pub impid: std::borrow::Cow<'a, str>,
 
     /// float; required
     /// Bid price expressed as CPM although the actual transaction is for a unit impression only.
@@ -23,71 +25,71 @@ pub struct Bid {
     /// Win notice URL called by the exchange if the bid wins (not necessarily indicative of a
     /// delivered, viewed, or billable ad); optional means of serving ad markup. Substitution
     /// macros (Section 4.4) may be included in both the URL and optionally returned markup.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub nurl: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub nurl: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Billing notice URL called by the exchange when a winning bid becomes billable based on
     /// exchange-specific business policy (e.g., typically delivered, viewed, etc.). Substitution
     /// macros (Section 4.4) may be included.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub burl: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub burl: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Loss notice URL called by the exchange when a bid is known to have been lost. Substitution
     /// macros (Section 4.4) may be included. Exchange-specific policy may preclude support for
     /// loss notices or the disclosure of winning clearing prices resulting in ${AUCTION_PRICE}
     /// macros being removed (i.e., replaced with a zero-length string).
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub lurl: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub lurl: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Optional means of conveying ad markup in case the bid wins; supersedes the win notice if
     /// markup is included in both. Substitution macros (Section 4.4) may be included.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub adm: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub adm: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// ID of a preloaded ad to be served if the bid wins.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub adid: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub adid: Option<std::borrow::Cow<'a, str>>,
 
     /// string array
     /// Advertiser domain for block list checking (e.g., “ford.com”). This can be an array of for
     /// the case of rotating creatives. Exchanges can mandate that only one domain is allowed.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub adomain: Option<Vec<String>>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub adomain: Option<Vec<std::borrow::Cow<'a, str>>>,
 
     /// string
     /// A platform-specific application identifier intended to be unique to the app and independent
     /// of the exchange. On Android, this should be a bundle or package name (e.g.,
     /// com.foo.mygame). On iOS, it is a numeric ID.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub bundle: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub bundle: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// URL without cache-busting to an image that is representative of the content of the campaign
     /// for ad quality/safety checking.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub iurl: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub iurl: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Campaign ID to assist with ad quality checking; the collection of creatives for which iurl
     /// should be representative.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub cid: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub cid: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Creative ID to assist with ad quality checking.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub crid: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub crid: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Tactic ID to enable buyers to label bids for reporting to the exchange the tactic through
     /// which their bid was submitted. The specific usage and meaning of the tactic ID should be
     /// communicated between buyer and exchanges a priori.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub tactic: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub tactic: Option<std::borrow::Cow<'a, str>>,
 
     /// string array
     /// IAB content categories of the creative. Refer to List 5.1.
@@ -118,14 +120,14 @@ pub struct Bid {
     /// Language of the creative using ISO-639-1-alpha-2. The non- standard code “xx” may also be
     /// used if the creative has no linguistic content (e.g., a banner with just a company logo).
     // TODO: ISO-639-1-alpha-2
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub language: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub language: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Reference to the deal.id from the bid request if this bid pertains to a private marketplace
     /// direct deal.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub dealid: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub dealid: Option<std::borrow::Cow<'a, str>>,
 
     /// integer
     /// Width of the creative in device independent pixels (DIPS).

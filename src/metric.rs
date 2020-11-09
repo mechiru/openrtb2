@@ -5,11 +5,12 @@
 /// click-through rate, etc. Each metric is identified by its type, reports the value of the metric,
 /// and optionally identifies the source or vendor measuring the value.
 #[derive(serde::Serialize, serde::Deserialize, Default, Debug, PartialEq, Clone)]
-pub struct Metric {
+pub struct Metric<'a> {
     /// string; required
     /// Type of metric being presented using exchange curated string names which should be
     /// published to bidders a priori.
-    pub r#type: String,
+    #[serde(borrow)]
+    pub r#type: std::borrow::Cow<'a, str>,
 
     /// float; required
     /// Number representing the value of the metric. Probabilities must be in the range 0.0 – 1.0.
@@ -19,8 +20,8 @@ pub struct Metric {
     /// Source of the value using exchange curated string names which should be published to
     /// bidders a priori. If the exchange itself is the source versus a third party, “EXCHANGE” is
     /// recommended.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub vendor: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub vendor: Option<std::borrow::Cow<'a, str>>,
 
     /// object
     /// Placeholder for exchange-specific extensions to OpenRTB.

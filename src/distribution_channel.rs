@@ -4,18 +4,20 @@
 /// [`App`]: ./struct.App.html
 #[derive(serde::Serialize, serde::Deserialize, Debug, PartialEq, Clone)]
 #[serde(rename_all = "snake_case")]
-pub enum DistributionChannel {
+pub enum DistributionChannel<'a> {
     /// object; recommended
     /// Details via a Site object (Section 3.2.13) about the publisher’s website. Only applicable
     /// and recommended for websites.
-    Site(crate::Site),
+    #[serde(borrow)]
+    Site(crate::Site<'a>),
     /// object; recommended
     /// Details via an App object (Section 3.2.14) about the publisher’s app (i.e., non-browser
     /// applications). Only applicable and recommended for apps.
-    App(crate::App),
+    #[serde(borrow)]
+    App(crate::App<'a>),
 }
 
-impl DistributionChannel {
+impl<'a> DistributionChannel<'a> {
     /// Returns true if the `DistributionChannel` is a Site. Returns false otherwise.
     ///
     /// ```
@@ -23,13 +25,13 @@ impl DistributionChannel {
     /// assert!(DistributionChannel::Site(Default::default()).is_site());
     /// assert!(!DistributionChannel::App(Default::default()).is_site());
     /// ```
-    pub fn is_site(&self) -> bool {
+    pub fn is_site(&'a self) -> bool {
         self.as_site().is_some()
     }
 
     /// If the `DistributionChannel` is a Site, returns the associated `Site`. Returns None
     /// otherwise.
-    pub fn as_site(&self) -> Option<&crate::Site> {
+    pub fn as_site(&'a self) -> Option<&'a crate::Site> {
         match self {
             Self::Site(site) => Some(site),
             _ => None,
@@ -38,7 +40,7 @@ impl DistributionChannel {
 
     /// If the `DistributionChannel` is a Site, returns the associated mutable `Site`. Returns None
     /// otherwise.
-    pub fn as_site_mut(&mut self) -> Option<&mut crate::Site> {
+    pub fn as_site_mut(&'a mut self) -> Option<&'a mut crate::Site> {
         match self {
             Self::Site(ref mut site) => Some(site),
             _ => None,
@@ -52,13 +54,13 @@ impl DistributionChannel {
     /// assert!(!DistributionChannel::Site(Default::default()).is_app());
     /// assert!(DistributionChannel::App(Default::default()).is_app());
     /// ```
-    pub fn is_app(&self) -> bool {
+    pub fn is_app(&'a self) -> bool {
         self.as_app().is_some()
     }
 
     /// If the `DistributionChannel` is an App, returns the associated `App`. Returns None
     /// otherwise.
-    pub fn as_app(&self) -> Option<&crate::App> {
+    pub fn as_app(&'a self) -> Option<&'a crate::App> {
         match self {
             Self::App(app) => Some(app),
             _ => None,
@@ -67,7 +69,7 @@ impl DistributionChannel {
 
     /// If the `DistributionChannel` is an App, returns the associated mutable `App`. Returns None
     /// otherwise.
-    pub fn as_app_mut(&mut self) -> Option<&mut crate::App> {
+    pub fn as_app_mut(&'a mut self) -> Option<&'a mut crate::App> {
         match self {
             Self::App(ref mut app) => Some(app),
             _ => None,

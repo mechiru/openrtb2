@@ -7,11 +7,11 @@
 /// syndication method. For example might be a video impression embedded in an iframe on an unknown
 /// web property or device.
 #[derive(serde::Serialize, serde::Deserialize, Default, Debug, PartialEq, Clone)]
-pub struct Content {
+pub struct Content<'a> {
     /// string
     /// ID uniquely identifying the content.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub id: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub id: Option<std::borrow::Cow<'a, str>>,
 
     /// integer
     /// Episode number.
@@ -24,52 +24,52 @@ pub struct Content {
     /// for web).
     /// Non-Video Example: “Why an Antarctic Glacier Is Melting So Quickly” (Time magazine
     /// article).
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub title: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub title: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Content series.
     /// Video Examples: “The Office” (television), “Star Wars” (movie), or “Arby ‘N’ The Chief”
     /// (made for web).
     /// Non-Video Example: “Ecocentric” (Time Magazine blog).
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub series: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub series: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Content season (e.g., “Season 3”).
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub season: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub season: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Artist credited with the content.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub artist: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub artist: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Genre that best describes the content (e.g., rock, pop, etc).
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub genre: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub genre: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Album to which the content belongs; typically for audio.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub album: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub album: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// International Standard Recording Code conforming to ISO-3901.
     // TODO: ISO- 3901
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub isrc: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub isrc: Option<std::borrow::Cow<'a, str>>,
 
     /// object
     /// Details about the content Producer (Section 3.2.17).
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub producer: Option<crate::Producer>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub producer: Option<crate::Producer<'a>>,
 
     /// string
     /// URL of the content, for buy-side contextualization or review.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub url: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub url: Option<std::borrow::Cow<'a, str>>,
 
     /// string array
     /// Array of IAB content categories that describe the content producer. Refer to List 5.1.
@@ -94,13 +94,13 @@ pub struct Content {
 
     /// string
     /// Content rating (e.g., MPAA).
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub contentrating: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub contentrating: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// User rating of the content (e.g., number of stars, likes, etc.).
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub userrating: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub userrating: Option<std::borrow::Cow<'a, str>>,
 
     /// integer
     /// Media rating per IQG guidelines. Refer to List 5.19.
@@ -109,8 +109,8 @@ pub struct Content {
 
     /// string
     /// Comma separated list of keywords describing the content.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub keywords: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub keywords: Option<std::borrow::Cow<'a, str>>,
 
     /// integer
     /// 0 = not live, 1 = content is live (e.g., stream, live blog).
@@ -154,8 +154,8 @@ pub struct Content {
     /// object array
     /// Additional content data. Each Data object (Section 3.2.21) represents a different data
     /// source.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub data: Option<Vec<crate::Data>>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub data: Option<Vec<crate::Data<'a>>>,
 
     /// object
     /// Placeholder for exchange-specific extensions to OpenRTB.

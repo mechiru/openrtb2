@@ -4,10 +4,11 @@
 /// Its presence with the Pmp collection indicates that this impression is available under the terms
 /// of that deal. Refer to Section 7.3 for more details.
 #[derive(serde::Serialize, serde::Deserialize, Default, Debug, PartialEq, Clone)]
-pub struct Deal {
+pub struct Deal<'a> {
     /// string; required
     /// A unique identifier for the direct deal.
-    pub id: String,
+    #[serde(borrow)]
+    pub id: std::borrow::Cow<'a, str>,
 
     /// float; default 0
     /// Minimum bid for this impression expressed in CPM.
@@ -18,8 +19,12 @@ pub struct Deal {
     /// Currency specified using ISO-4217 alpha codes. This may be different from bid currency
     /// returned by bidder if this is allowed by the exchange.
     // TODO: ISO-4217 alpha
-    #[serde(default, skip_serializing_if = "default_ext::DefaultExt::is_default")]
-    pub bidfloorcur: String,
+    #[serde(
+        borrow,
+        default,
+        skip_serializing_if = "default_ext::DefaultExt::is_default"
+    )]
+    pub bidfloorcur: std::borrow::Cow<'a, str>,
 
     /// integer
     /// Optional override of the overall auction type of the bid request, where 1 = First Price, 2
@@ -32,14 +37,14 @@ pub struct Deal {
     /// Whitelist of buyer seats (e.g., advertisers, agencies) allowed to bid on this deal. IDs of
     /// seats and the buyer’s customers to which they refer must be coordinated between bidders and
     /// the exchange a priori. Omission implies no seat restrictions.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub wseat: Option<Vec<String>>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub wseat: Option<Vec<std::borrow::Cow<'a, str>>>,
 
     /// string array
     /// Array of advertiser domains (e.g., advertiser.com) allowed to bid on this deal. Omission
     /// implies no advertiser restrictions.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub wadomain: Option<Vec<String>>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub wadomain: Option<Vec<std::borrow::Cow<'a, str>>>,
 
     /// object
     /// Placeholder for exchange-specific extensions to OpenRTB.

@@ -10,33 +10,38 @@
 /// the bidder wishes to convey to the exchange a reason for not bidding, just a BidResponse object
 /// is returned with a reason code in the nbr attribute.
 #[derive(serde::Serialize, serde::Deserialize, Default, Debug, PartialEq, Clone)]
-pub struct BidResponse {
+pub struct BidResponse<'a> {
     /// string; required
     /// ID of the bid request to which this is a response.
-    pub id: String,
+    #[serde(borrow)]
+    pub id: std::borrow::Cow<'a, str>,
 
     /// object array
     /// Array of seatbid objects; 1+ required if a bid is to be made.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub seatbid: Option<Vec<crate::SeatBid>>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub seatbid: Option<Vec<crate::SeatBid<'a>>>,
 
     /// string
     /// Bidder generated response ID to assist with logging/tracking.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub bidid: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub bidid: Option<std::borrow::Cow<'a, str>>,
 
     /// string; default “USD”
     /// Bid currency using ISO-4217 alpha codes.
     // TODO: ISO-4217 alpha
-    #[serde(default, skip_serializing_if = "default_ext::DefaultExt::is_default")]
-    pub cur: String,
+    #[serde(
+        borrow,
+        default,
+        skip_serializing_if = "default_ext::DefaultExt::is_default"
+    )]
+    pub cur: std::borrow::Cow<'a, str>,
 
     /// string
     /// Optional feature to allow a bidder to set data in the exchange’s cookie. The string must be
     /// in base85 cookie safe characters and be in any format. Proper JSON encoding must be used to
     /// include “escaped” quotation marks.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub customdata: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub customdata: Option<std::borrow::Cow<'a, str>>,
 
     /// integer
     /// Reason for not bidding. Refer to List 5.24.

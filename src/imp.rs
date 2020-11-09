@@ -10,60 +10,61 @@
 /// publisher can choose one such type which is the typical case or mix them at their discretion.
 /// However, any given bid for the impression must conform to one of the offered types.
 #[derive(serde::Serialize, serde::Deserialize, Default, Debug, PartialEq, Clone)]
-pub struct Imp {
+pub struct Imp<'a> {
     /// string; required
     /// A unique identifier for this impression within the context of the bid request (typically,
     /// starts with 1 and increments.
-    pub id: String,
+    #[serde(borrow)]
+    pub id: std::borrow::Cow<'a, str>,
 
     /// object array
     /// An array of Metric object (Section 3.2.5).
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub metric: Option<Vec<crate::Metric>>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub metric: Option<Vec<crate::Metric<'a>>>,
 
     /// object
     /// A Banner object (Section 3.2.6); required if this impression is offered as a banner ad
     /// opportunity.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub banner: Option<crate::Banner>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub banner: Option<crate::Banner<'a>>,
 
     /// object
     /// A Video object (Section 3.2.7); required if this impression is offered as a video ad
     /// opportunity.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub video: Option<crate::Video>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub video: Option<crate::Video<'a>>,
 
     /// object
     /// An Audio object (Section 3.2.8); required if this impression is offered as an audio ad
     /// opportunity.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub audio: Option<crate::Audio>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub audio: Option<crate::Audio<'a>>,
 
     /// object
     /// A Native object (Section 3.2.9); required if this impression is offered as a native ad
     /// opportunity.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub native: Option<crate::Native>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub native: Option<crate::Native<'a>>,
 
     /// object
     /// A Pmp object (Section 3.2.11) containing any private marketplace deals in effect for this
     /// impression.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub pmp: Option<crate::Pmp>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub pmp: Option<crate::Pmp<'a>>,
 
     /// string
     /// Name of ad mediation partner, SDK technology, or player responsible for rendering ad
     /// (typically video or mobile). Used by some ad servers to customize ad code by partner.
     /// Recommended for video and/or apps.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub displaymanager: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub displaymanager: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Version of ad mediation partner, SDK technology, or player responsible for rendering ad
     /// (typically video or mobile). Used by some ad servers to customize ad code by partner.
     /// Recommended for video and/or apps.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub displaymanagerver: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub displaymanagerver: Option<std::borrow::Cow<'a, str>>,
 
     /// integer; default 0
     /// 1 = the ad is interstitial or full screen, 0 = not interstitial.
@@ -77,8 +78,8 @@ pub struct Imp {
     /// string
     /// Identifier for specific ad placement or ad tag that was used to initiate the auction. This
     /// can be useful for debugging of any issues, or for optimization by the buyer.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub tagid: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub tagid: Option<std::borrow::Cow<'a, str>>,
 
     /// float; default 0
     /// Minimum bid for this impression expressed in CPM.
@@ -89,8 +90,12 @@ pub struct Imp {
     /// Currency specified using ISO-4217 alpha codes. This may be different from bid currency
     /// returned by bidder if this is allowed by the exchange.
     // TODO: ISO-4217 alpha
-    #[serde(default, skip_serializing_if = "default_ext::DefaultExt::is_default")]
-    pub bidfloorcur: String,
+    #[serde(
+        borrow,
+        default,
+        skip_serializing_if = "default_ext::DefaultExt::is_default"
+    )]
+    pub bidfloorcur: std::borrow::Cow<'a, str>,
 
     /// integer
     /// Indicates the type of browser opened upon clicking the creative in an app, where 0 =
@@ -116,8 +121,8 @@ pub struct Imp {
 
     /// string array
     /// Array of exchange-specific names of supported iframe busters.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub iframebuster: Option<Vec<String>>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub iframebuster: Option<Vec<std::borrow::Cow<'a, str>>>,
 
     /// integer
     /// Advisory as to the number of seconds that may elapse between the auction and the actual

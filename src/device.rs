@@ -6,17 +6,17 @@ use serde::{Deserialize, Serialize};
 /// Device information includes its hardware, platform, location, and carrier data. The device can
 /// refer to a mobile handset, a desktop computer, set top box, or other digital device.
 #[derive(Serialize, Deserialize, Default, Debug, PartialEq, Clone)]
-pub struct Device {
+pub struct Device<'a> {
     /// string; recommended
     /// Browser user agent string.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub ua: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub ua: Option<std::borrow::Cow<'a, str>>,
 
     /// object; recommended
     /// Location of the device assumed to be the user’s current location defined by a Geo object
     /// (Section 3.2.19).
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub geo: Option<crate::Geo>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub geo: Option<crate::Geo<'a>>,
 
     /// integer; recommended
     /// Standard “Do Not Track” flag as set in the header by the browser, where 0 = tracking is
@@ -40,13 +40,13 @@ pub struct Device {
 
     /// string; recommended
     /// IPv4 address closest to device.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub ip: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub ip: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// IP address closest to device as IPv6.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub ipv6: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub ipv6: Option<std::borrow::Cow<'a, str>>,
 
     /// integer
     /// The general type of device. Refer to List 5.21.
@@ -55,28 +55,28 @@ pub struct Device {
 
     /// string
     /// Device make (e.g., “Apple”).
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub make: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub make: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Device model (e.g., “iPhone”).
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub model: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub model: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Device operating system (e.g., “iOS”).
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub os: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub os: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Device operating system version (e.g., “3.1.2”).
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub osv: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub osv: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Hardware version of the device (e.g., “5S” for iPhone 5S).
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub hwv: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub hwv: Option<std::borrow::Cow<'a, str>>,
 
     /// integer
     /// Physical height of the screen in pixels.
@@ -119,28 +119,28 @@ pub struct Device {
 
     /// string
     /// Version of Flash supported by the browser.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub flashver: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub flashver: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Browser language using ISO-639-1-alpha-2.
     // TODO: ISO-639-1-alpha-2
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub language: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub language: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Carrier or ISP (e.g., “VERIZON”) using exchange curated string names which should be
     /// published to bidders a priori.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub carrier: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub carrier: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Mobile carrier as the concatenated MCC-MNC code (e.g., “310-005” identifies Verizon
     /// Wireless CDMA in the USA). Refer to https://en.wikipedia.org/wiki/Mobile_country_code for further
     /// examples. Note that the dash between the MCC and MNC parts is required to remove parsing
     /// ambiguity.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub mccmnc: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub mccmnc: Option<std::borrow::Cow<'a, str>>,
 
     /// integer
     /// Network connection type. Refer to List 5.22.
@@ -149,38 +149,38 @@ pub struct Device {
 
     /// string
     /// ID sanctioned for advertiser use in the clear (i.e., not hashed).
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub ifa: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub ifa: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Hardware device ID (e.g., IMEI); hashed via SHA1.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub didsha1: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub didsha1: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Hardware device ID (e.g., IMEI); hashed via MD5.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub didmd5: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub didmd5: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Platform device ID (e.g., Android ID); hashed via SHA1.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub dpidsha1: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub dpidsha1: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Platform device ID (e.g., Android ID); hashed via MD5.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub dpidmd5: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub dpidmd5: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// MAC address of the device; hashed via SHA1.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub macsha1: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub macsha1: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// MAC address of the device; hashed via MD5.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub macmd5: Option<String>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub macmd5: Option<std::borrow::Cow<'a, str>>,
 
     /// object
     /// Placeholder for exchange-specific extensions to OpenRTB.
