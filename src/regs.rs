@@ -5,7 +5,7 @@
 /// Commission’s regulations for the United States Children’s Online Privacy Protection Act
 /// (“COPPA”).
 #[derive(serde::Serialize, serde::Deserialize, Default, Debug, PartialEq, Clone)]
-pub struct Regs {
+pub struct Regs<'a> {
     /// integer
     /// Flag indicating if this request is subject to the COPPA regulations established by the USA
     /// FTC, where 0 = no, 1 = yes. Refer to Section 7.5 for more information.
@@ -18,8 +18,8 @@ pub struct Regs {
 
     /// object
     /// Placeholder for exchange-specific extensions to OpenRTB.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub ext: Option<json_ext::Ext>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub ext: Option<json_ext::Ext<'a>>,
 }
 
 #[cfg(test)]

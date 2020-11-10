@@ -16,8 +16,8 @@ pub struct Banner<'a> {
     /// object array; recommended
     /// Array of format objects (Section 3.2.10) representing the banner sizes permitted. If none
     /// are specified, then use of the h and w attributes is highly recommended.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub format: Option<Vec<crate::Format>>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub format: Option<Vec<crate::Format<'a>>>,
 
     /// integer
     /// Exact width in device independent pixels (DIPS); recommended if no format objects are
@@ -116,8 +116,8 @@ pub struct Banner<'a> {
 
     /// object
     /// Placeholder for exchange-specific extensions to OpenRTB.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub ext: Option<json_ext::Ext>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub ext: Option<json_ext::Ext<'a>>,
 }
 
 #[cfg(test)]

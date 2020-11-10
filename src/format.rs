@@ -5,7 +5,7 @@
 /// are permitted. It is recommended that either the w/h pair or the wratio/hratio/wmin set (i.e.,
 /// for Flex Ads) be specified.
 #[derive(serde::Serialize, serde::Deserialize, Default, Debug, PartialEq, Clone)]
-pub struct Format {
+pub struct Format<'a> {
     /// integer
     /// Width in device independent pixels (DIPS).
     #[serde(default, skip_serializing_if = "Option::is_none")]
@@ -34,8 +34,8 @@ pub struct Format {
 
     /// object
     /// Placeholder for exchange-specific extensions to OpenRTB.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub ext: Option<json_ext::Ext>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub ext: Option<json_ext::Ext<'a>>,
 }
 
 #[cfg(test)]

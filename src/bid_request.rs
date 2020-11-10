@@ -130,13 +130,13 @@ pub struct BidRequest<'a> {
     /// object
     /// A Regs object (Section 3.2.3) that specifies any industry, legal, or governmental
     /// regulations in force for this request.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub regs: Option<crate::Regs>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub regs: Option<crate::Regs<'a>>,
 
     /// object
     /// Placeholder for exchange-specific extensions to OpenRTB.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub ext: Option<json_ext::Ext>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub ext: Option<json_ext::Ext<'a>>,
 }
 
 #[cfg(test)]

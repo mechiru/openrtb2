@@ -50,8 +50,8 @@ pub struct BidResponse<'a> {
 
     /// object
     /// Placeholder for bidder-specific extensions to OpenRTB.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub ext: Option<json_ext::Ext>,
+    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    pub ext: Option<json_ext::Ext<'a>>,
 }
 
 #[cfg(test)]
