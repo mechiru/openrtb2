@@ -11,9 +11,11 @@ categories = ["api-bindings"]
 keywords = ["iab", "openrtb"]
 readme = "README.md"
 
+[dev-dependencies]
+serde_json = { version = "1.0" }
+
 [dependencies]
 serde = { version = "1.0", features = ["derive"] }
-serde_json = { version = "1.0" }
 serde_repr = { version = "0.1" }
 default-ext = { version = "0.1" }
 json-ext = { version = "0.2" }
