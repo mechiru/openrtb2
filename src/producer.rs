@@ -29,7 +29,7 @@ pub struct Producer<'a> {
     /// object
     /// Placeholder for exchange-specific extensions to OpenRTB.
     #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
-    pub ext: Option<json_ext::Ext<'a>>,
+    pub ext: Option<json_ext::Object<'a>>,
 }
 
 #[cfg(test)]
