@@ -19,15 +19,12 @@
 pub struct Native<'a> {
     /// string; required
     /// Request payload complying with the Native Ad Specification.
-    // TODO: enum NativeRequest<'a> { String(std::borrow::Cow<'a, str>),
-    // V1(openrtb_native1::request::Request) }
     #[serde(borrow)]
     pub request: std::borrow::Cow<'a, str>,
 
     /// string; recommended
     /// Version of the Dynamic Native Ads API to which request complies; highly recommended for
     /// efficient parsing.
-    // TODO: Option<openrtb-native1::Version>
     #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
     pub ver: Option<std::borrow::Cow<'a, str>>,
 
