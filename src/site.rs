@@ -8,17 +8,17 @@ pub struct Site {
     /// string; recommended
     /// Exchange-specific site ID.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub id: Option<std::borrow::Cow<'a, str>>,
+    pub id: Option<String>,
 
     /// string
     /// Site name (may be aliased at the publisher’s request).
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub name: Option<std::borrow::Cow<'a, str>>,
+    pub name: Option<String>,
 
     /// string
     /// Domain of the site (e.g., “mysite.foo.com”).
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub domain: Option<std::borrow::Cow<'a, str>>,
+    pub domain: Option<String>,
 
     /// string array
     /// Array of IAB content categories of the site. Refer to List 5.1.
@@ -40,17 +40,17 @@ pub struct Site {
     /// string
     /// URL of the page where the impression will be shown.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub page: Option<std::borrow::Cow<'a, str>>,
+    pub page: Option<String>,
 
     /// string
     /// Referrer URL that caused navigation to the current page.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub r#ref: Option<std::borrow::Cow<'a, str>>,
+    pub r#ref: Option<String>,
 
     /// string
     /// Search string that caused navigation to the current page.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub search: Option<std::borrow::Cow<'a, str>>,
+    pub search: Option<String>,
 
     /// integer
     /// Indicates if the site has been programmed to optimize layout when viewed on mobile devices,
@@ -84,7 +84,7 @@ pub struct Site {
     /// string
     /// Comma separated list of keywords about the site.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub keywords: Option<std::borrow::Cow<'a, str>>,
+    pub keywords: Option<String>,
 
     /// object
     /// Placeholder for exchange-specific extensions to OpenRTB.

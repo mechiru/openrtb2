@@ -74,7 +74,7 @@ pub struct Banner {
     /// Content MIME types supported. Popular MIME types may include
     /// “application/x-shockwave-flash”, “image/jpg”, and “image/gif”.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub mimes: Option<Vec<std::borrow::Cow<'a, str>>>,
+    pub mimes: Option<Vec<String>>,
 
     /// integer
     /// Indicates if the banner is in the top frame as opposed to an iframe, where 0 = no, 1 = yes.
@@ -101,7 +101,7 @@ pub struct Banner {
     /// Video object (Section 3.2.7) to represent an array of companion ads. Values usually start
     /// at 1 and increase with each object; should be unique within an impression.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub id: Option<std::borrow::Cow<'a, str>>,
+    pub id: Option<String>,
 
     /// integer
     /// Relevant only for Banner objects used with a Video object (Section 3.2.7) in an array of

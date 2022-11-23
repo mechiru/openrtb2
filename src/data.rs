@@ -10,12 +10,12 @@ pub struct Data {
     /// string
     /// Exchange-specific ID for the data provider.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub id: Option<std::borrow::Cow<'a, str>>,
+    pub id: Option<String>,
 
     /// string
     /// Exchange-specific name for the data provider.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub name: Option<std::borrow::Cow<'a, str>>,
+    pub name: Option<String>,
 
     /// object array
     /// Array of Segment (Section 3.2.22) objects that contain the actual data values.

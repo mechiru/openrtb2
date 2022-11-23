@@ -15,7 +15,7 @@ pub struct Video {
     /// string array; required
     /// Content MIME types supported (e.g., “video/x-ms-wmv”, “video/mp4”).
     #[serde(borrow)]
-    pub mimes: Vec<std::borrow::Cow<'a, str>>,
+    pub mimes: Vec<String>,
 
     /// integer; recommended
     /// Minimum video ad duration in seconds.

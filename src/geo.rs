@@ -50,39 +50,39 @@ pub struct Geo {
     /// Country code using ISO-3166-1-alpha-3.
     // TODO: ISO-3166-1-alpha-3.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub country: Option<std::borrow::Cow<'a, str>>,
+    pub country: Option<String>,
 
     /// string
     /// Region code using ISO-3166-2; 2-letter state code if USA.
     // TODO: ISO-3166-2
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub region: Option<std::borrow::Cow<'a, str>>,
+    pub region: Option<String>,
 
     /// string
     /// Region of a country using FIPS 10-4 notation. While OpenRTB supports this attribute, it has
     /// been withdrawn by NIST in 2008.
     // TODO: FIPS 10-4 notation
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub regionfips104: Option<std::borrow::Cow<'a, str>>,
+    pub regionfips104: Option<String>,
 
     /// string
     /// Google metro code; similar to but not exactly Nielsen DMAs. See Appendix A for a link to
     /// the codes.
     // TODO: Google metro code http://code.google.com/apis/adwords/docs/appendix/metrocodes.html
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub metro: Option<std::borrow::Cow<'a, str>>,
+    pub metro: Option<String>,
 
     /// string
     /// City using United Nations Code for Trade & Transport Locations. See Appendix A for a link
     /// to the codes.
     // TODO: U.N. Code for Trade and Transport Locations
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub city: Option<std::borrow::Cow<'a, str>>,
+    pub city: Option<String>,
 
     /// string
     /// Zip or postal code.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub zip: Option<std::borrow::Cow<'a, str>>,
+    pub zip: Option<String>,
 
     /// integer
     /// Local time as the number +/- of minutes from UTC.

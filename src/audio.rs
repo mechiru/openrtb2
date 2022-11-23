@@ -15,7 +15,7 @@ pub struct Audio {
     /// string array; required
     /// Content MIME types supported (e.g., “audio/mp4”).
     #[serde(borrow)]
-    pub mimes: Vec<std::borrow::Cow<'a, str>>,
+    pub mimes: Vec<String>,
 
     /// integer; recommended
     /// Minimum audio ad duration in seconds.

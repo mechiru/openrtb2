@@ -16,7 +16,7 @@ pub struct SeatBid {
     /// string
     /// ID of the buyer seat (e.g., advertiser, agency) on whose behalf this bid is made.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub seat: Option<std::borrow::Cow<'a, str>>,
+    pub seat: Option<String>,
 
     /// integer; default 0
     /// 0 = impressions can be won individually; 1 = impressions must be won or lost as a group.

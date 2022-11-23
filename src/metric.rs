@@ -10,7 +10,7 @@ pub struct Metric {
     /// Type of metric being presented using exchange curated string names which should be
     /// published to bidders a priori.
     #[serde(borrow)]
-    pub r#type: std::borrow::Cow<'a, str>,
+    pub r#type: String,
 
     /// float; required
     /// Number representing the value of the metric. Probabilities must be in the range 0.0 – 1.0.
@@ -21,7 +21,7 @@ pub struct Metric {
     /// bidders a priori. If the exchange itself is the source versus a third party, “EXCHANGE” is
     /// recommended.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub vendor: Option<std::borrow::Cow<'a, str>>,
+    pub vendor: Option<String>,
 
     /// object
     /// Placeholder for exchange-specific extensions to OpenRTB.

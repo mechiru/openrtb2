@@ -9,13 +9,13 @@ pub struct User {
     /// string; recommended
     /// Exchange-specific ID for the user. At least one of id or buyeruid is recommended.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub id: Option<std::borrow::Cow<'a, str>>,
+    pub id: Option<String>,
 
     /// string; recommended
     /// Buyer-specific ID for the user as mapped by the exchange for the buyer. At least one of
     /// buyeruid or id is recommended.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub buyeruid: Option<std::borrow::Cow<'a, str>>,
+    pub buyeruid: Option<String>,
 
     /// integer
     /// Year of birth as a 4-digit integer.
@@ -30,14 +30,14 @@ pub struct User {
     /// string
     /// Comma separated list of keywords, interests, or intent.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub keywords: Option<std::borrow::Cow<'a, str>>,
+    pub keywords: Option<String>,
 
     /// string
     /// Optional feature to pass bidder data that was set in the exchange’s cookie. The string must
     /// be in base85 cookie safe characters and be in any format. Proper JSON encoding must be used
     /// to include “escaped” quotation marks.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub customdata: Option<std::borrow::Cow<'a, str>>,
+    pub customdata: Option<String>,
 
     /// object
     /// Location of the user’s home base defined by a Geo object (Section 3.2.19). This is not
