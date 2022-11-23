@@ -19,51 +19,51 @@ pub struct Imp<'a> {
 
     /// object array
     /// An array of Metric object (Section 3.2.5).
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub metric: Option<Vec<crate::Metric<'a>>>,
 
     /// object
     /// A Banner object (Section 3.2.6); required if this impression is offered as a banner ad
     /// opportunity.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub banner: Option<crate::Banner<'a>>,
 
     /// object
     /// A Video object (Section 3.2.7); required if this impression is offered as a video ad
     /// opportunity.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub video: Option<crate::Video<'a>>,
 
     /// object
     /// An Audio object (Section 3.2.8); required if this impression is offered as an audio ad
     /// opportunity.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub audio: Option<crate::Audio<'a>>,
 
     /// object
     /// A Native object (Section 3.2.9); required if this impression is offered as a native ad
     /// opportunity.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub native: Option<crate::Native<'a>>,
 
     /// object
     /// A Pmp object (Section 3.2.11) containing any private marketplace deals in effect for this
     /// impression.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub pmp: Option<crate::Pmp<'a>>,
 
     /// string
     /// Name of ad mediation partner, SDK technology, or player responsible for rendering ad
     /// (typically video or mobile). Used by some ad servers to customize ad code by partner.
     /// Recommended for video and/or apps.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub displaymanager: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Version of ad mediation partner, SDK technology, or player responsible for rendering ad
     /// (typically video or mobile). Used by some ad servers to customize ad code by partner.
     /// Recommended for video and/or apps.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub displaymanagerver: Option<std::borrow::Cow<'a, str>>,
 
     /// integer; default 0
@@ -78,7 +78,7 @@ pub struct Imp<'a> {
     /// string
     /// Identifier for specific ad placement or ad tag that was used to initiate the auction. This
     /// can be useful for debugging of any issues, or for optimization by the buyer.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub tagid: Option<std::borrow::Cow<'a, str>>,
 
     /// float; default 0
@@ -121,7 +121,7 @@ pub struct Imp<'a> {
 
     /// string array
     /// Array of exchange-specific names of supported iframe busters.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub iframebuster: Option<Vec<std::borrow::Cow<'a, str>>>,
 
     /// integer
@@ -132,7 +132,7 @@ pub struct Imp<'a> {
 
     /// object
     /// Placeholder for exchange-specific extensions to OpenRTB.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub ext: Option<serde_json::Map<String, serde_json::Value>>,
 }
 

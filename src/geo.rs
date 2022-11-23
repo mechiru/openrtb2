@@ -49,39 +49,39 @@ pub struct Geo<'a> {
     /// string
     /// Country code using ISO-3166-1-alpha-3.
     // TODO: ISO-3166-1-alpha-3.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub country: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Region code using ISO-3166-2; 2-letter state code if USA.
     // TODO: ISO-3166-2
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub region: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Region of a country using FIPS 10-4 notation. While OpenRTB supports this attribute, it has
     /// been withdrawn by NIST in 2008.
     // TODO: FIPS 10-4 notation
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub regionfips104: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Google metro code; similar to but not exactly Nielsen DMAs. See Appendix A for a link to
     /// the codes.
     // TODO: Google metro code http://code.google.com/apis/adwords/docs/appendix/metrocodes.html
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub metro: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// City using United Nations Code for Trade & Transport Locations. See Appendix A for a link
     /// to the codes.
     // TODO: U.N. Code for Trade and Transport Locations
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub city: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Zip or postal code.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub zip: Option<std::borrow::Cow<'a, str>>,
 
     /// integer
@@ -91,7 +91,7 @@ pub struct Geo<'a> {
 
     /// object
     /// Placeholder for exchange-specific extensions to OpenRTB.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub ext: Option<serde_json::Map<String, serde_json::Value>>,
 }
 

@@ -16,7 +16,7 @@ pub struct Banner<'a> {
     /// object array; recommended
     /// Array of format objects (Section 3.2.10) representing the banner sizes permitted. If none
     /// are specified, then use of the h and w attributes is highly recommended.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub format: Option<Vec<crate::Format<'a>>>,
 
     /// integer
@@ -73,7 +73,7 @@ pub struct Banner<'a> {
     /// string array
     /// Content MIME types supported. Popular MIME types may include
     /// “application/x-shockwave-flash”, “image/jpg”, and “image/gif”.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub mimes: Option<Vec<std::borrow::Cow<'a, str>>>,
 
     /// integer
@@ -100,7 +100,7 @@ pub struct Banner<'a> {
     /// Unique identifier for this banner object. Recommended when Banner objects are used with a
     /// Video object (Section 3.2.7) to represent an array of companion ads. Values usually start
     /// at 1 and increase with each object; should be unique within an impression.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub id: Option<std::borrow::Cow<'a, str>>,
 
     /// integer
@@ -116,7 +116,7 @@ pub struct Banner<'a> {
 
     /// object
     /// Placeholder for exchange-specific extensions to OpenRTB.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub ext: Option<serde_json::Map<String, serde_json::Value>>,
 }
 

@@ -18,12 +18,12 @@ pub struct BidResponse<'a> {
 
     /// object array
     /// Array of seatbid objects; 1+ required if a bid is to be made.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub seatbid: Option<Vec<crate::SeatBid<'a>>>,
 
     /// string
     /// Bidder generated response ID to assist with logging/tracking.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub bidid: Option<std::borrow::Cow<'a, str>>,
 
     /// string; default “USD”
@@ -40,7 +40,7 @@ pub struct BidResponse<'a> {
     /// Optional feature to allow a bidder to set data in the exchange’s cookie. The string must be
     /// in base85 cookie safe characters and be in any format. Proper JSON encoding must be used to
     /// include “escaped” quotation marks.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub customdata: Option<std::borrow::Cow<'a, str>>,
 
     /// integer
@@ -50,7 +50,7 @@ pub struct BidResponse<'a> {
 
     /// object
     /// Placeholder for bidder-specific extensions to OpenRTB.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub ext: Option<serde_json::Map<String, serde_json::Value>>,
 }
 

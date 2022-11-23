@@ -6,12 +6,12 @@
 pub struct Publisher<'a> {
     /// string
     /// Exchange-specific publisher ID.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub id: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Publisher name (may be aliased at the publisher’s request).
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub name: Option<std::borrow::Cow<'a, str>>,
 
     /// string array
@@ -21,12 +21,12 @@ pub struct Publisher<'a> {
 
     /// string
     /// Highest level domain of the publisher (e.g., “publisher.com”).
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub domain: Option<std::borrow::Cow<'a, str>>,
 
     /// object
     /// Placeholder for exchange-specific extensions to OpenRTB.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub ext: Option<serde_json::Map<String, serde_json::Value>>,
 }
 

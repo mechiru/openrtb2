@@ -8,29 +8,29 @@
 pub struct App<'a> {
     /// string; recommended
     /// Exchange-specific app ID.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub id: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// App name (may be aliased at the publisher’s request).
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub name: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// A platform-specific application identifier intended to be unique to the app and independent
     /// of the exchange. On Android, this should be a bundle or package name (e.g.,
     /// com.foo.mygame). On iOS, it is typically a numeric ID.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub bundle: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Domain of the app (e.g., “mygame.foo.com”).
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub domain: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// App store URL for an installed app; for IQG 2.1 compliance.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub storeurl: Option<std::borrow::Cow<'a, str>>,
 
     /// string array
@@ -52,7 +52,7 @@ pub struct App<'a> {
 
     /// string
     /// Application version.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub ver: Option<std::borrow::Cow<'a, str>>,
 
     /// integer
@@ -75,22 +75,22 @@ pub struct App<'a> {
 
     /// object
     /// Details about the Publisher (Section 3.2.15) of the app.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub publisher: Option<crate::Publisher<'a>>,
 
     /// object
     /// Details about the Content (Section 3.2.16) within the app.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub content: Option<crate::Content<'a>>,
 
     /// string
     /// Comma separated list of keywords about the app.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub keywords: Option<std::borrow::Cow<'a, str>>,
 
     /// object
     /// Placeholder for exchange-specific extensions to OpenRTB.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub ext: Option<serde_json::Map<String, serde_json::Value>>,
 }
 

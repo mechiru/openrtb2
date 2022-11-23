@@ -20,12 +20,12 @@ pub struct Metric<'a> {
     /// Source of the value using exchange curated string names which should be published to
     /// bidders a priori. If the exchange itself is the source versus a third party, “EXCHANGE” is
     /// recommended.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub vendor: Option<std::borrow::Cow<'a, str>>,
 
     /// object
     /// Placeholder for exchange-specific extensions to OpenRTB.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub ext: Option<serde_json::Map<String, serde_json::Value>>,
 }
 

@@ -75,7 +75,7 @@ pub struct Audio<'a> {
 
     /// object array
     /// Array of Banner objects (Section 3.2.6) if companion ads are available.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub companionad: Option<Vec<crate::Banner<'a>>>,
 
     /// integer array
@@ -117,7 +117,7 @@ pub struct Audio<'a> {
 
     /// object
     /// Placeholder for exchange-specific extensions to OpenRTB.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub ext: Option<serde_json::Map<String, serde_json::Value>>,
 }
 

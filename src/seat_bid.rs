@@ -15,7 +15,7 @@ pub struct SeatBid<'a> {
 
     /// string
     /// ID of the buyer seat (e.g., advertiser, agency) on whose behalf this bid is made.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub seat: Option<std::borrow::Cow<'a, str>>,
 
     /// integer; default 0
@@ -29,7 +29,7 @@ pub struct SeatBid<'a> {
 
     /// object
     /// Placeholder for bidder-specific extensions to OpenRTB.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub ext: Option<serde_json::Map<String, serde_json::Value>>,
 }
 

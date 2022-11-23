@@ -8,12 +8,12 @@ pub struct Producer<'a> {
     /// string
     /// Content producer or originator ID. Useful if content is syndicated and may be posted on a
     /// site using embed tags.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub id: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Content producer or originator name (e.g., “Warner Bros”).
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub name: Option<std::borrow::Cow<'a, str>>,
 
     /// string array
@@ -23,12 +23,12 @@ pub struct Producer<'a> {
 
     /// string
     /// Highest level domain of the content producer (e.g., “producer.com”).
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub domain: Option<std::borrow::Cow<'a, str>>,
 
     /// object
     /// Placeholder for exchange-specific extensions to OpenRTB.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub ext: Option<serde_json::Map<String, serde_json::Value>>,
 }
 

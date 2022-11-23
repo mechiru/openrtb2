@@ -37,18 +37,18 @@ pub struct Deal<'a> {
     /// Whitelist of buyer seats (e.g., advertisers, agencies) allowed to bid on this deal. IDs of
     /// seats and the buyer’s customers to which they refer must be coordinated between bidders and
     /// the exchange a priori. Omission implies no seat restrictions.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub wseat: Option<Vec<std::borrow::Cow<'a, str>>>,
 
     /// string array
     /// Array of advertiser domains (e.g., advertiser.com) allowed to bid on this deal. Omission
     /// implies no advertiser restrictions.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub wadomain: Option<Vec<std::borrow::Cow<'a, str>>>,
 
     /// object
     /// Placeholder for exchange-specific extensions to OpenRTB.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub ext: Option<serde_json::Map<String, serde_json::Value>>,
 }
 

@@ -21,18 +21,18 @@ pub struct Source<'a> {
     /// string; recommended
     /// Transaction ID that must be common across all participants in this bid request (e.g.,
     /// potentially multiple exchanges).
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub tid: Option<std::borrow::Cow<'a, str>>,
 
     /// string; recommended
     /// Payment ID chain string containing embedded syntax described in the TAG Payment ID Protocol
     /// v1.0.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub pchain: Option<std::borrow::Cow<'a, str>>,
 
     /// object
     /// Placeholder for exchange-specific extensions to OpenRTB.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub ext: Option<serde_json::Map<String, serde_json::Value>>,
 }
 

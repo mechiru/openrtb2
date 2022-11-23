@@ -24,19 +24,19 @@ pub struct BidRequest<'a> {
     pub imp: Vec<crate::Imp<'a>>,
 
     /// object; recommended
-    #[serde(borrow, flatten, default, skip_serializing_if = "Option::is_none")]
+    #[serde(flatten, default, skip_serializing_if = "Option::is_none")]
     pub channel: Option<crate::DistributionChannel<'a>>,
 
     /// object; recommended
     /// Details via a Device object (Section 3.2.18) about the user’s device to which the
     /// impression will be delivered.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub device: Option<crate::Device<'a>>,
 
     /// object; recommended
     /// Details via a User object (Section 3.2.20) about the human user of the device; the
     /// advertising audience.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub user: Option<crate::User<'a>>,
 
     /// integer; default 0
@@ -66,7 +66,7 @@ pub struct BidRequest<'a> {
     /// IDs of seats and knowledge of the buyer’s customers to which they refer must be coordinated
     /// between bidders and the exchange a priori. At most, only one of wseat and bseat should be
     /// used in the same request. Omission of both implies no seat restrictions.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub wseat: Option<Vec<std::borrow::Cow<'a, str>>>,
 
     /// string array
@@ -74,7 +74,7 @@ pub struct BidRequest<'a> {
     /// impression. IDs of seats and knowledge of the buyer’s customers to which they refer must be
     /// coordinated between bidders and the exchange a priori. At most, only one of wseat and bseat
     /// should be used in the same request. Omission of both implies no seat restrictions.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub bseat: Option<Vec<std::borrow::Cow<'a, str>>>,
 
     /// integer; default 0
@@ -93,7 +93,7 @@ pub struct BidRequest<'a> {
     /// Array of allowed currencies for bids on this bid request using ISO-4217 alpha codes.
     /// Recommended only if the exchange accepts multiple currencies.
     // TODO: ISO-4217 alpha
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub cur: Option<Vec<std::borrow::Cow<'a, str>>>,
 
     /// string array
@@ -101,7 +101,7 @@ pub struct BidRequest<'a> {
     /// restrictions, but buyers would be advised to consider language attribute in the Device
     /// and/or Content objects if available.
     // TODO: ISO-639-1-alpha-2
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub wlang: Option<Vec<std::borrow::Cow<'a, str>>>,
 
     /// string array
@@ -111,31 +111,31 @@ pub struct BidRequest<'a> {
 
     /// string array
     /// Block list of advertisers by their domains (e.g., “ford.com”).
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub badv: Option<Vec<std::borrow::Cow<'a, str>>>,
 
     /// string array
     /// Block list of applications by their platform-specific exchange- independent application
     /// identifiers. On Android, these should be bundle or package names (e.g., com.foo.mygame). On
     /// iOS, these are numeric IDs.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub bapp: Option<Vec<std::borrow::Cow<'a, str>>>,
 
     /// object
     /// A Sorce object (Section 3.2.2) that provides data about the inventory source and which
     /// entity makes the final decision.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub source: Option<crate::Source<'a>>,
 
     /// object
     /// A Regs object (Section 3.2.3) that specifies any industry, legal, or governmental
     /// regulations in force for this request.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub regs: Option<crate::Regs<'a>>,
 
     /// object
     /// Placeholder for exchange-specific extensions to OpenRTB.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub ext: Option<serde_json::Map<String, serde_json::Value>>,
 }
 

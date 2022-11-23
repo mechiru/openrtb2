@@ -18,12 +18,12 @@ pub struct Pmp<'a> {
     /// object array
     /// Array of Deal (Section 3.2.12) objects that convey the specific deals applicable to this
     /// impression.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub deals: Option<Vec<crate::Deal<'a>>>,
 
     /// object
     /// Placeholder for exchange-specific extensions to OpenRTB.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub ext: Option<serde_json::Map<String, serde_json::Value>>,
 }
 

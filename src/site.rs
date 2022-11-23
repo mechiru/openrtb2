@@ -7,17 +7,17 @@
 pub struct Site<'a> {
     /// string; recommended
     /// Exchange-specific site ID.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub id: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Site name (may be aliased at the publisher’s request).
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub name: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Domain of the site (e.g., “mysite.foo.com”).
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub domain: Option<std::borrow::Cow<'a, str>>,
 
     /// string array
@@ -39,17 +39,17 @@ pub struct Site<'a> {
 
     /// string
     /// URL of the page where the impression will be shown.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub page: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Referrer URL that caused navigation to the current page.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub r#ref: Option<std::borrow::Cow<'a, str>>,
 
     /// string
     /// Search string that caused navigation to the current page.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub search: Option<std::borrow::Cow<'a, str>>,
 
     /// integer
@@ -73,22 +73,22 @@ pub struct Site<'a> {
 
     /// object
     /// Details about the Publisher (Section 3.2.15) of the site.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub publisher: Option<crate::Publisher<'a>>,
 
     /// object
     /// Details about the Content (Section 3.2.16) within the site.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub content: Option<crate::Content<'a>>,
 
     /// string
     /// Comma separated list of keywords about the site.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub keywords: Option<std::borrow::Cow<'a, str>>,
 
     /// object
     /// Placeholder for exchange-specific extensions to OpenRTB.
-    #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub ext: Option<serde_json::Map<String, serde_json::Value>>,
 }
 
