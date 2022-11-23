@@ -133,7 +133,7 @@ pub struct Imp<'a> {
     /// object
     /// Placeholder for exchange-specific extensions to OpenRTB.
     #[serde(borrow, default, skip_serializing_if = "Option::is_none")]
-    pub ext: Option<json_ext::Object<'a>>,
+    pub ext: Option<serde_json::Map<String, serde_json::Value>>,
 }
 
 #[cfg(test)]
