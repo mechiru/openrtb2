@@ -4,7 +4,7 @@
 /// non-browser application. A bid request must not contain both a Site and an App object. At a
 /// minimum, it is useful to provide a site ID or page URL, but this is not strictly required.
 #[derive(serde::Serialize, serde::Deserialize, Default, Debug, PartialEq, Clone)]
-pub struct Site<'a> {
+pub struct Site {
     /// string; recommended
     /// Exchange-specific site ID.
     #[serde(default, skip_serializing_if = "Option::is_none")]
@@ -74,12 +74,12 @@ pub struct Site<'a> {
     /// object
     /// Details about the Publisher (Section 3.2.15) of the site.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub publisher: Option<crate::Publisher<'a>>,
+    pub publisher: Option<crate::Publisher>,
 
     /// object
     /// Details about the Content (Section 3.2.16) within the site.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub content: Option<crate::Content<'a>>,
+    pub content: Option<crate::Content>,
 
     /// string
     /// Comma separated list of keywords about the site.

@@ -5,7 +5,7 @@
 /// click-through rate, etc. Each metric is identified by its type, reports the value of the metric,
 /// and optionally identifies the source or vendor measuring the value.
 #[derive(serde::Serialize, serde::Deserialize, Default, Debug, PartialEq, Clone)]
-pub struct Metric<'a> {
+pub struct Metric {
     /// string; required
     /// Type of metric being presented using exchange curated string names which should be
     /// published to bidders a priori.

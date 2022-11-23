@@ -10,7 +10,7 @@
 /// publisher can choose one such type which is the typical case or mix them at their discretion.
 /// However, any given bid for the impression must conform to one of the offered types.
 #[derive(serde::Serialize, serde::Deserialize, Default, Debug, PartialEq, Clone)]
-pub struct Imp<'a> {
+pub struct Imp {
     /// string; required
     /// A unique identifier for this impression within the context of the bid request (typically,
     /// starts with 1 and increments.
@@ -20,37 +20,37 @@ pub struct Imp<'a> {
     /// object array
     /// An array of Metric object (Section 3.2.5).
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub metric: Option<Vec<crate::Metric<'a>>>,
+    pub metric: Option<Vec<crate::Metric>>,
 
     /// object
     /// A Banner object (Section 3.2.6); required if this impression is offered as a banner ad
     /// opportunity.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub banner: Option<crate::Banner<'a>>,
+    pub banner: Option<crate::Banner>,
 
     /// object
     /// A Video object (Section 3.2.7); required if this impression is offered as a video ad
     /// opportunity.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub video: Option<crate::Video<'a>>,
+    pub video: Option<crate::Video>,
 
     /// object
     /// An Audio object (Section 3.2.8); required if this impression is offered as an audio ad
     /// opportunity.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub audio: Option<crate::Audio<'a>>,
+    pub audio: Option<crate::Audio>,
 
     /// object
     /// A Native object (Section 3.2.9); required if this impression is offered as a native ad
     /// opportunity.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub native: Option<crate::Native<'a>>,
+    pub native: Option<crate::Native>,
 
     /// object
     /// A Pmp object (Section 3.2.11) containing any private marketplace deals in effect for this
     /// impression.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub pmp: Option<crate::Pmp<'a>>,
+    pub pmp: Option<crate::Pmp>,
 
     /// string
     /// Name of ad mediation partner, SDK technology, or player responsible for rendering ad

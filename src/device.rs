@@ -6,7 +6,7 @@ use serde::{Deserialize, Serialize};
 /// Device information includes its hardware, platform, location, and carrier data. The device can
 /// refer to a mobile handset, a desktop computer, set top box, or other digital device.
 #[derive(Serialize, Deserialize, Default, Debug, PartialEq, Clone)]
-pub struct Device<'a> {
+pub struct Device {
     /// string; recommended
     /// Browser user agent string.
     #[serde(default, skip_serializing_if = "Option::is_none")]
@@ -16,7 +16,7 @@ pub struct Device<'a> {
     /// Location of the device assumed to be the user’s current location defined by a Geo object
     /// (Section 3.2.19).
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub geo: Option<crate::Geo<'a>>,
+    pub geo: Option<crate::Geo>,
 
     /// integer; recommended
     /// Standard “Do Not Track” flag as set in the header by the browser, where 0 = tracking is

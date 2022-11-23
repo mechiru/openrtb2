@@ -7,7 +7,7 @@
 /// another RTB exchange, a mediation platform, or an ad server combines direct campaigns with 3rd
 /// party demand in decisioning.
 #[derive(serde::Serialize, serde::Deserialize, Default, Debug, PartialEq, Clone)]
-pub struct Source<'a> {
+pub struct Source {
     /// integer; recommended
     /// Entity responsible for the final impression sale decision, where 0 = exchange, 1 = upstream
     /// source.

@@ -4,7 +4,7 @@
 /// that may pertain to this impression. The actual deals are represented as a collection of Deal
 /// objects. Refer to Section 7.3 for more details.
 #[derive(serde::Serialize, serde::Deserialize, Default, Debug, PartialEq, Clone)]
-pub struct Pmp<'a> {
+pub struct Pmp {
     /// integer; default 0
     /// Indicator of auction eligibility to seats named in the Direct Deals object, where 0 = all
     /// bids are accepted, 1 = bids are restricted to the deals specified and the terms thereof.
@@ -19,7 +19,7 @@ pub struct Pmp<'a> {
     /// Array of Deal (Section 3.2.12) objects that convey the specific deals applicable to this
     /// impression.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub deals: Option<Vec<crate::Deal<'a>>>,
+    pub deals: Option<Vec<crate::Deal>>,
 
     /// object
     /// Placeholder for exchange-specific extensions to OpenRTB.

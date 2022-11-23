@@ -3,7 +3,7 @@
 /// This object describes the publisher of the media in which the ad will be displayed. The
 /// publisher is typically the seller in an OpenRTB transaction.
 #[derive(serde::Serialize, serde::Deserialize, Default, Debug, PartialEq, Clone)]
-pub struct Publisher<'a> {
+pub struct Publisher {
     /// string
     /// Exchange-specific publisher ID.
     #[serde(default, skip_serializing_if = "Option::is_none")]

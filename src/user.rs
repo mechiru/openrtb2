@@ -5,7 +5,7 @@
 /// other privacy policies. However, this user ID must be stable long enough to serve reasonably as
 /// the basis for frequency capping and retargeting.
 #[derive(serde::Serialize, serde::Deserialize, Default, Debug, PartialEq, Clone)]
-pub struct User<'a> {
+pub struct User {
     /// string; recommended
     /// Exchange-specific ID for the user. At least one of id or buyeruid is recommended.
     #[serde(default, skip_serializing_if = "Option::is_none")]
@@ -43,12 +43,12 @@ pub struct User<'a> {
     /// Location of the user’s home base defined by a Geo object (Section 3.2.19). This is not
     /// necessarily their current location.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub geo: Option<crate::Geo<'a>>,
+    pub geo: Option<crate::Geo>,
 
     /// object array
     /// Additional user data. Each Data object (Section 3.2.21) represents a different data source.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub data: Option<Vec<crate::Data<'a>>>,
+    pub data: Option<Vec<crate::Data>>,
 
     /// object
     /// Placeholder for exchange-specific extensions to OpenRTB.

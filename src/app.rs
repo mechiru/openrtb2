@@ -5,7 +5,7 @@
 /// Site object. At a minimum, it is useful to provide an App ID or bundle, but this is not strictly
 /// required.
 #[derive(serde::Serialize, serde::Deserialize, Default, Debug, PartialEq, Clone)]
-pub struct App<'a> {
+pub struct App {
     /// string; recommended
     /// Exchange-specific app ID.
     #[serde(default, skip_serializing_if = "Option::is_none")]
@@ -76,12 +76,12 @@ pub struct App<'a> {
     /// object
     /// Details about the Publisher (Section 3.2.15) of the app.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub publisher: Option<crate::Publisher<'a>>,
+    pub publisher: Option<crate::Publisher>,
 
     /// object
     /// Details about the Content (Section 3.2.16) within the app.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub content: Option<crate::Content<'a>>,
+    pub content: Option<crate::Content>,
 
     /// string
     /// Comma separated list of keywords about the app.

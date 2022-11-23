@@ -4,7 +4,7 @@
 /// impression in the bid request via the impid attribute and constitutes an offer to buy that
 /// impression for a given price.
 #[derive(serde::Serialize, serde::Deserialize, Default, Debug, PartialEq, Clone)]
-pub struct Bid<'a> {
+pub struct Bid {
     /// string; required
     /// Bidder generated bid ID to assist with logging/tracking.
     #[serde(borrow)]

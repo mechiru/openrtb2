@@ -10,7 +10,7 @@
 /// the bidder wishes to convey to the exchange a reason for not bidding, just a BidResponse object
 /// is returned with a reason code in the nbr attribute.
 #[derive(serde::Serialize, serde::Deserialize, Default, Debug, PartialEq, Clone)]
-pub struct BidResponse<'a> {
+pub struct BidResponse {
     /// string; required
     /// ID of the bid request to which this is a response.
     #[serde(borrow)]
@@ -19,7 +19,7 @@ pub struct BidResponse<'a> {
     /// object array
     /// Array of seatbid objects; 1+ required if a bid is to be made.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub seatbid: Option<Vec<crate::SeatBid<'a>>>,
+    pub seatbid: Option<Vec<crate::SeatBid>>,
 
     /// string
     /// Bidder generated response ID to assist with logging/tracking.

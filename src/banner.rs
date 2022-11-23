@@ -12,12 +12,12 @@
 /// also be offered as video, audio, and/or native by also including as Imp subordinates objects of
 /// those types. However, any given bid for the impression must conform to one of the offered types.
 #[derive(serde::Serialize, serde::Deserialize, Default, Debug, PartialEq, Clone)]
-pub struct Banner<'a> {
+pub struct Banner {
     /// object array; recommended
     /// Array of format objects (Section 3.2.10) representing the banner sizes permitted. If none
     /// are specified, then use of the h and w attributes is highly recommended.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub format: Option<Vec<crate::Format<'a>>>,
+    pub format: Option<Vec<crate::Format>>,
 
     /// integer
     /// Exact width in device independent pixels (DIPS); recommended if no format objects are

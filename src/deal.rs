@@ -4,7 +4,7 @@
 /// Its presence with the Pmp collection indicates that this impression is available under the terms
 /// of that deal. Refer to Section 7.3 for more details.
 #[derive(serde::Serialize, serde::Deserialize, Default, Debug, PartialEq, Clone)]
-pub struct Deal<'a> {
+pub struct Deal {
     /// string; required
     /// A unique identifier for the direct deal.
     #[serde(borrow)]

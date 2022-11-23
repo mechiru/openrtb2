@@ -9,7 +9,7 @@
 /// type attribute. For example, the centroid of a geographic region such as postal code should not
 /// be passed.
 #[derive(serde::Serialize, serde::Deserialize, Default, Debug, PartialEq, Clone)]
-pub struct Geo<'a> {
+pub struct Geo {
     /// float
     /// Latitude from -90.0 to +90.0, where negative is south.
     #[serde(default, skip_serializing_if = "Option::is_none")]

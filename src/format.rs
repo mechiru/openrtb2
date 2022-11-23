@@ -5,7 +5,7 @@
 /// are permitted. It is recommended that either the w/h pair or the wratio/hratio/wmin set (i.e.,
 /// for Flex Ads) be specified.
 #[derive(serde::Serialize, serde::Deserialize, Default, Debug, PartialEq, Clone)]
-pub struct Format<'a> {
+pub struct Format {
     /// integer
     /// Width in device independent pixels (DIPS).
     #[serde(default, skip_serializing_if = "Option::is_none")]

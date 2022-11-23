@@ -7,7 +7,7 @@
 /// syndication method. For example might be a video impression embedded in an iframe on an unknown
 /// web property or device.
 #[derive(serde::Serialize, serde::Deserialize, Default, Debug, PartialEq, Clone)]
-pub struct Content<'a> {
+pub struct Content {
     /// string
     /// ID uniquely identifying the content.
     #[serde(default, skip_serializing_if = "Option::is_none")]
@@ -64,7 +64,7 @@ pub struct Content<'a> {
     /// object
     /// Details about the content Producer (Section 3.2.17).
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub producer: Option<crate::Producer<'a>>,
+    pub producer: Option<crate::Producer>,
 
     /// string
     /// URL of the content, for buy-side contextualization or review.
@@ -155,7 +155,7 @@ pub struct Content<'a> {
     /// Additional content data. Each Data object (Section 3.2.21) represents a different data
     /// source.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub data: Option<Vec<crate::Data<'a>>>,
+    pub data: Option<Vec<crate::Data>>,
 
     /// object
     /// Placeholder for exchange-specific extensions to OpenRTB.

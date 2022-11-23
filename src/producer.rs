@@ -4,7 +4,7 @@
 /// particularly useful when the content is syndicated and may be distributed through different
 /// publishers and thus when the producer and publisher are not necessarily the same entity.
 #[derive(serde::Serialize, serde::Deserialize, Default, Debug, PartialEq, Clone)]
-pub struct Producer<'a> {
+pub struct Producer {
     /// string
     /// Content producer or originator ID. Useful if content is syndicated and may be posted on a
     /// site using embed tags.

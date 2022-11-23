@@ -6,12 +6,12 @@
 /// impressions that it can win (default) or if it is only interested in winning any if it can win
 /// them all as a group.
 #[derive(serde::Serialize, serde::Deserialize, Default, Debug, PartialEq, Clone)]
-pub struct SeatBid<'a> {
+pub struct SeatBid {
     /// object array; required
     /// Array of 1+ Bid objects (Section 4.2.3) each related to an impression. Multiple bids can
     /// relate to the same impression.
     #[serde(borrow)]
-    pub bid: Vec<crate::Bid<'a>>,
+    pub bid: Vec<crate::Bid>,
 
     /// string
     /// ID of the buyer seat (e.g., advertiser, agency) on whose behalf this bid is made.

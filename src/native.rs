@@ -16,7 +16,7 @@
 /// also be offered as banner, video, and/or audio by also including as Imp subordinates objects of
 /// those types. However, any given bid for the impression must conform to one of the offered types.
 #[derive(serde::Serialize, serde::Deserialize, Default, Debug, PartialEq, Clone)]
-pub struct Native<'a> {
+pub struct Native {
     /// string; required
     /// Request payload complying with the Native Ad Specification.
     #[serde(borrow)]

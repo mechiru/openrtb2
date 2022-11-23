@@ -6,7 +6,7 @@
 /// multiple providers. The specific data providers in use should be published by the exchange a
 /// priori to its bidders.
 #[derive(serde::Serialize, serde::Deserialize, Default, Debug, PartialEq, Clone)]
-pub struct Data<'a> {
+pub struct Data {
     /// string
     /// Exchange-specific ID for the data provider.
     #[serde(default, skip_serializing_if = "Option::is_none")]
@@ -20,7 +20,7 @@ pub struct Data<'a> {
     /// object array
     /// Array of Segment (Section 3.2.22) objects that contain the actual data values.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub segment: Option<Vec<crate::Segment<'a>>>,
+    pub segment: Option<Vec<crate::Segment>>,
 
     /// object
     /// Placeholder for exchange-specific extensions to OpenRTB.

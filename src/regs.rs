@@ -5,7 +5,7 @@
 /// Commission’s regulations for the United States Children’s Online Privacy Protection Act
 /// (“COPPA”).
 #[derive(serde::Serialize, serde::Deserialize, Default, Debug, PartialEq, Clone)]
-pub struct Regs<'a> {
+pub struct Regs {
     /// integer
     /// Flag indicating if this request is subject to the COPPA regulations established by the USA
     /// FTC, where 0 = no, 1 = yes. Refer to Section 7.5 for more information.
