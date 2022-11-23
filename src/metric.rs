@@ -9,7 +9,6 @@ pub struct Metric {
     /// string; required
     /// Type of metric being presented using exchange curated string names which should be
     /// published to bidders a priori.
-    #[serde(borrow)]
     pub r#type: String,
 
     /// float; required

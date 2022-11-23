@@ -7,7 +7,6 @@
 pub struct Deal {
     /// string; required
     /// A unique identifier for the direct deal.
-    #[serde(borrow)]
     pub id: String,
 
     /// float; default 0

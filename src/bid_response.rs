@@ -13,7 +13,6 @@
 pub struct BidResponse {
     /// string; required
     /// ID of the bid request to which this is a response.
-    #[serde(borrow)]
     pub id: String,
 
     /// object array

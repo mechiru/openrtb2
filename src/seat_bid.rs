@@ -10,7 +10,6 @@ pub struct SeatBid {
     /// object array; required
     /// Array of 1+ Bid objects (Section 4.2.3) each related to an impression. Multiple bids can
     /// relate to the same impression.
-    #[serde(borrow)]
     pub bid: Vec<crate::Bid>,
 
     /// string

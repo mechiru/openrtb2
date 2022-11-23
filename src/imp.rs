@@ -14,7 +14,6 @@ pub struct Imp {
     /// string; required
     /// A unique identifier for this impression within the context of the bid request (typically,
     /// starts with 1 and increments.
-    #[serde(borrow)]
     pub id: String,
 
     /// object array

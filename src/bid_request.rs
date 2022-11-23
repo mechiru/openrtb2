@@ -14,13 +14,11 @@
 pub struct BidRequest {
     /// string; required
     /// Unique ID of the bid request, provided by the exchange.
-    #[serde(borrow)]
     pub id: String,
 
     /// object array; required
     /// Array of Imp objects (Section 3.2.4) representing the impressions offered. At least 1 Imp
     /// object is required.
-    #[serde(borrow)]
     pub imp: Vec<crate::Imp>,
 
     /// object; recommended

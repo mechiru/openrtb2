@@ -7,12 +7,10 @@
 pub struct Bid {
     /// string; required
     /// Bidder generated bid ID to assist with logging/tracking.
-    #[serde(borrow)]
     pub id: String,
 
     /// string; required
     /// ID of the Imp object in the related bid request.
-    #[serde(borrow)]
     pub impid: String,
 
     /// float; required
