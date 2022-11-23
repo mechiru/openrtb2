@@ -17,5 +17,6 @@ serde_json = { version = "1.0" }
 [dependencies]
 serde = { version = "1.0", features = ["derive"] }
 serde_repr = { version = "0.1" }
+serde_json = { version = "1.0" }
 default-ext = { version = "0.1" }
 json-ext = { version = "0.3" }
